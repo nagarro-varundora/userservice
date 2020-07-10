@@ -19,7 +19,10 @@ spec:
         image: mysql:latest
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: "root"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
         - name: MYSQL_DATABASE
           value: "userdb"
         ports:
